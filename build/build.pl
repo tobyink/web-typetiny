@@ -15,7 +15,7 @@ my $destdir = path($Bin)->parent;
 my $upload  = 'server:vhosts/typetiny.toby.ink';
 
 my $version = Type::Tiny->VERSION;
-if ($version =~ /^(.+)\.(...)(...)/ and $1 % 2) {
+if ($version =~ /^(.+)\.(...)(...)/ and $2 % 2) {
 	$version = "$1\.$2\_$3";
 }
 
