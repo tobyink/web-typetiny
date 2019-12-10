@@ -14,6 +14,13 @@ my $srcdir  = path('/home/tai/src/p5/p5-type-tiny/lib/');
 my $destdir = path($Bin)->parent;
 my $upload  = 'server:vhosts/typetiny.toby.ink';
 
+my $version = Type::Tiny->VERSION;
+if ($version =~ /^(.+)\.(...)(...)/ and $1 % 2) {
+	$version = "$1\.$2\_$3";
+}
+
+my $stable_version = '1.006000';
+
 # chdir $srcdir; find -type f | grep Manual
 my @files = map substr($_, 2), qw(
 	./Type/Tiny/Manual.pod
@@ -34,12 +41,59 @@ my @files = map substr($_, 2), qw(
 	./Type/Tiny/Manual/AllTypes.pod
 	./Type/Tiny/Manual/Policies.pod
 	./Type/Tiny/Manual/Contributing.pod
+	
+	./Devel/TypeTiny/Perl56Compat.pm
+	./Devel/TypeTiny/Perl58Compat.pm
+	./Error/TypeTiny/Assertion.pm
+	./Error/TypeTiny/Compilation.pm
+	./Error/TypeTiny.pm
+	./Error/TypeTiny/WrongNumberOfParameters.pm
+	./Eval/TypeTiny.pm
+	./Reply/Plugin/TypeTiny.pm
+	./Test/TypeTiny.pm
+	./Type/Coercion/FromMoose.pm
+	./Type/Coercion.pm
+	./Type/Coercion/Union.pm
+	./Type/Library.pm
+	./Type/Params.pm
+	./Type/Parser.pm
+	./Type/Registry.pm
+	./Types/Common/Numeric.pm
+	./Types/Common/String.pm
+	./Types/Standard/ArrayRef.pm
+	./Types/Standard/CycleTuple.pm
+	./Types/Standard/Dict.pm
+	./Types/Standard/HashRef.pm
+	./Types/Standard/Map.pm
+	./Types/Standard.pm
+	./Types/Standard/ScalarRef.pm
+	./Types/Standard/StrMatch.pm
+	./Types/Standard/Tied.pm
+	./Types/Standard/Tuple.pm
+	./Types/TypeTiny.pm
+	./Type/Tiny/Class.pm
+	./Type/Tiny/ConstrainedObject.pm
+	./Type/Tiny/Duck.pm
+	./Type/Tiny/Enum.pm
+	./Type/Tiny/_HalfOp.pm
+	./Type/Tiny/Intersection.pm
+	./Type/Tiny.pm
+	./Type/Tiny/Role.pm
+	./Type/Tiny/Union.pm
+	./Type/Utils.pm
 );
+
+my %known = map {
+	my $pod = $_;
+	$pod =~ s/\.(pod|pm)$//;
+	$pod =~ s/\//::/g;
+	$pod => 1;
+} @files;
 
 my $menu = join '', map {
 	my ($f) = m{\/([^/]+)\.pod$};
 	sprintf('<li class="dropdown-item"><a href="%s">%s</a></li>', $f eq 'Manual' ? '/' : "/$f.html", $f);
-} @files;
+} grep /Manual\//, @files;
 
 my $parser = TOBYINK::Pod::HTML->new(
 	code_highlighting => 1,
@@ -50,10 +104,13 @@ my $template = $destdir->child('build/template.html')->slurp_utf8;
 
 for my $f (@files) {
 	my $srcfile   = $srcdir->child($f);
+	my $pageclass;
 	my $destfile  = do {
 		$f =~ s/Type.Tiny.Manual.//;
-		$f =~ s/pod/html/;
+		$f =~ s/(pod|pm)$/html/;
+		$f =~ s/\//-/g;
 		$f = 'index.html' if $f eq 'html';
+		($pageclass = $f) =~ s/\.html$//;
 		path($f);
 	};
 	
@@ -63,9 +120,11 @@ for my $f (@files) {
 	
 	my $dom = $parser->string_to_dom($pod);
 	
-	$dom->querySelectorAll('a')->foreach(sub {
+	$dom->querySelectorAll('a[href]')->foreach(sub {
 		if ($_->{href} =~ m{^https?://metacpan\.org/pod/(.+)$}) {
 			my $man = $1;
+			my $anchor;
+			($man, $anchor) = split /#/, $man;
 			$man =~ s/%3A/:/g;
 			if ($man eq 'Type::Tiny::Manual') {
 				$_->{href} = '/';
@@ -73,9 +132,15 @@ for my $f (@files) {
 			elsif ($man =~ m'Type::Tiny::Manual::(.+)') {
 				$_->{href} = "/$1\.html";
 			}
+			elsif ($known{$man}) {
+				my $html = $man;
+				$html =~ s/::/-/g;
+				$_->{href} = "/$html\.html";
+			}
 			else {
 				$_->{href} = "https://metacpan.org/pod/$man";
 			}
+			$_->{href} .= '#'.$anchor if $anchor;
 		}
 	});
 	
@@ -94,13 +159,35 @@ for my $f (@files) {
 	my @toc;
 	my $ns = '';
 	
-	if ($f eq 'index.html') {
+	if ($f eq 'index.html' or $f eq 'Installation.html') {
 		#https://metacpan.org/release/Type-Tiny
 		$cards .= 
 			'<div class="card bg-info text-white mb-3">' .
-			'<div class="card-header"><i class="fa fa-download"></i> Get Type::Tiny</div>' .
+			'<div class="card-header">Get Type::Tiny</div>' .
 			'<div class="card-body">' .
-			sprintf('<a style="text-decoration:none!important" href="https://metacpan.org/release/Type-Tiny">Type::Tiny&nbsp;%s is available on CPAN</a>', Type::Tiny->VERSION) . 
+			sprintf('<p>Type::Tiny&nbsp;%s is available on CPAN.</p>', $version) . 
+			( $stable_version eq $version
+				? sprintf(
+					'<p style="font-size:85%%"><a style="text-decoration:none!important" href="https://cpan.metacpan.org/authors/id/T/TO/TOBYINK/Type-Tiny-%s.tar.gz"><i class="fa fa-download"></i> <b>Version %s</b></a></p>',
+					$stable_version,
+					$stable_version,
+				)
+				: sprintf(
+					'<p style="font-size:85%%"><a style="text-decoration:none!important" href="https://cpan.metacpan.org/authors/id/T/TO/TOBYINK/Type-Tiny-%s.tar.gz"><i class="fa fa-download"></i> <b>Stable version %s</b></a><br><a style="text-decoration:none!important" href="https://cpan.metacpan.org/authors/id/T/TO/TOBYINK/Type-Tiny-%s.tar.gz"><i class="fa fa-download"></i> <b>Trial version %s</b></a></p>',
+					$stable_version,
+					$stable_version,
+					$version,
+					$version,
+				)
+			).
+			"</div></div>\n";
+	}
+	elsif ($f =~ /-/) {
+		$cards .= 
+			'<div class="card bg-secondary mb-3">' .
+			'<div class="card-header">Manual</div>' .
+			'<div class="card-body">' .
+			sprintf('The best place to start learning about this module is <a href="/">the manual</a>.') . 
 			"</div></div>\n";
 	}
 	
@@ -141,6 +228,13 @@ for my $f (@files) {
 			};
 			$main .= "$e";
 		}
+		elsif ($e->nodeName eq 'h3') {
+			push @{$toc[-1]{subheadings}||=[]}, {
+				title => $e->textContent,
+				id    => $e->querySelector('span')->{id},
+			};
+			$main .= "$e";
+		}
 		else {
 			$main .= "$e";
 		}
@@ -148,14 +242,28 @@ for my $f (@files) {
 	
 	$cards .=
 		'<div class="card bg-primary mb-3">' .
-		'<div class="card-header text-white">Contents</div>' .
+		'<div class="card-header">Contents</div>' .
 		sprintf(
 			'<ul class="list-group list-group-flush">%s</ul>',
 			join '', map {
+				my $h = $_;
+				my $sh = '';
+				if ($h->{subheadings}) {
+					$sh .= '<ul class="list-subgroup">';
+					$sh .= join '', map {
+						sprintf(
+							'<li class="list-subgroup-item"><a href="#%s">%s</a></li>',
+							encode_entities($_->{id}),
+							encode_entities($_->{title}),
+						);
+					} @{$h->{subheadings}};
+					$sh .= '</ul>';
+				}
 				sprintf(
-					'<li class="list-group-item"><a href="#%s">%s</a></li>',
-					encode_entities($_->{id}),
-					encode_entities($_->{title}),
+					'<li class="list-group-item"><a href="#%s">%s</a>%s</li>',
+					encode_entities($h->{id}),
+					encode_entities($h->{title}),
+					$sh,
 				);
 			} @toc,
 		) .
@@ -171,8 +279,15 @@ for my $f (@files) {
 		"</div></div>\n" if $ns;
 	
 	my $nicetitle = $title;
-	$nicetitle =~ s/::/&nbsp;»&nbsp;/g;
-	$nicetitle =~ s/&nbsp;»&nbsp;/::/;
+	if ($nicetitle =~ /Manual/) {
+		$nicetitle =~ s/::/&nbsp;» /g;
+		$nicetitle =~ s/&nbsp;»\s/::/;
+	}
+	
+	my $banner = '';
+	if ($f eq 'index.html') {
+		$banner = '<img class="fullwidth" src="/assets/banner.jpeg" alt="">';
+	}
 	
 	my $page = $template;
 	$page =~ s/#TITLE#/$title/g;
@@ -182,10 +297,16 @@ for my $f (@files) {
 	$page =~ s/#CARDS#/$cards/;
 	$page =~ s/#MENU#/$menu/;
 	$page =~ s/#VERSION#/Type::Tiny->VERSION/e;
+	$page =~ s/#PAGECLASS#/$pageclass/;
+	$page =~ s/#FULLWIDTHBANNER#/$banner/;
 	$destfile->spew($page);
 }
 
 system(
-	rsync        => '-r',
-	"$destdir/"  => $upload,
+	rsync => (
+		'-r',
+		'--exclude'  => '.hg*',
+		"$destdir/",
+		$upload,
+	)
 );

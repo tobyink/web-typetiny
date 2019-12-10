@@ -1,5 +1,5 @@
 <div class="card bg-secondary mb-3">
-<div class="card-header text-white">Bundled Libraries</div>
+<div class="card-header">Bundled Libraries</div>
 <ul class="list-group list-group-flush">
 <li class="list-group-item"><a href="https://metacpan.org/pod/Types::Standard">Types::Standard</a></li>
 <li class="list-group-item"><a href="https://metacpan.org/pod/Types::Common::String">Types::Common::String</a></li>
@@ -9,7 +9,7 @@
 </div>
 
 <div class="card bg-secondary mb-3">
-<div class="card-header text-white">Other Libraries on CPAN</div>
+<div class="card-header">Other Libraries on CPAN</div>
 <ul class="list-group list-group-flush">
 <li class="list-group-item"><a href="https://metacpan.org/pod/Types::XSD::Lite">Types::XSD::Lite</a></li>
 <li class="list-group-item"><a href="https://metacpan.org/pod/Types::Path::Tiny">Types::Path::Tiny</a></li>

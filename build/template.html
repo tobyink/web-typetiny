@@ -9,6 +9,21 @@
 		<meta name="description" value="#LEDE#">
 		<style type="text/css">
 			body { padding-top: 80px }
+			.dropdown-item:hover, .dropdown-item:focus {
+				background-color: #2FA4E7; /* bootstrap primary */
+				color: white;
+			}
+			.dropdown-item:hover a, .dropdown-item:focus a {
+				background-color: inherit;
+				color: inherit;
+			}
+			.dropdown-item a { display: block }
+			img.fullwidth { display: none }
+			@media (min-width: 992px) {
+				img.fullwidth { max-width:100%; display: block}
+				body.page-index { padding-top: 50px }
+				body.page-index header.row { display: none }
+			}
 			code { color: #444; font-weight: 400 }
 			div.card pre { margin-bottom: 1px }
 			h2 span::before { 
@@ -19,10 +34,6 @@
 				visibility: hidden; 
 				pointer-events: none;
 			}
-			.text-white a:link, .text-white a:visited {
-				color: inherit !important;
-				text-decoration: underline;
-			}
 			.text-white code {
 				color: #eee;
 			}
@@ -30,8 +41,8 @@
 				position: fixed;
 				bottom: 20px;
 				right: 20px;
-				background: rgb(108, 195, 213);
-				background: rgba(108, 195, 213, 0.7);
+				background: rgba(47,164,231); /* primary */
+				background: rgba(47,164,231,0.6);
 				width: 50px;
 				height: 50px;
 				display: block;
@@ -60,15 +71,21 @@
 				transition: all 0.3s ease;
 			}
 			#return-to-top:hover {
-				background: rgba(108, 195, 213, 0.9);
+				background: rgba(47,164,231,0.9);
 			}
 			#return-to-top:hover i {
 				color: #fff;
 				top: 5px;
 			}
+			.list-subgroup {
+				padding-inline-start: 20px;
+			}
+			.list-subgroup-item {
+				font-size: 85%;
+			}
 		</style>
 	</head>
-	<body>
+	<body class="page-#PAGECLASS#">
 		<div class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
 			<div class="container">
 				<a href="/" class="navbar-brand">Type::Tiny</a>
@@ -82,40 +99,40 @@
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="libraries">Type Libraries <span class="caret"></span></a>
 							<ul class="dropdown-menu" aria-labelledby="libraries">
-								<li class="dropdown-item"><a href="https://metacpan.org/pod/Types::Standard">Types::Standard</a></li>
-								<li class="dropdown-item"><a href="https://metacpan.org/pod/Types::Common::String">Types::Common::String</a></li>
-								<li class="dropdown-item"><a href="https://metacpan.org/pod/Types::Numeric">Types::Common::Numeric</a></li>
-								<li class="dropdown-item"><a href="https://metacpan.org/pod/Types::TypeTiny">Types::TypeTiny</a></li>
+								<li class="dropdown-item"><a href="Types-Standard.html">Types::Standard</a></li>
+								<li class="dropdown-item"><a href="Types-Common-String.html">Types::Common::String</a></li>
+								<li class="dropdown-item"><a href="Types-Common-Numeric.html">Types::Common::Numeric</a></li>
+								<li class="dropdown-item"><a href="Types-TypeTiny.html">Types::TypeTiny</a></li>
 							</ul>
 						</li>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="utils">Utilities <span class="caret"></span></a>
 							<ul class="dropdown-menu" aria-labelledby="utils">
-								<li class="dropdown-item"><a href="https://metacpan.org/pod/Type::Params">Type::Params</a></li>
-								<li class="dropdown-item"><a href="https://metacpan.org/pod/Type::Utils">Type::Utils</a></li>
-								<li class="dropdown-item"><a href="https://metacpan.org/pod/Type::Registry">Type::Registry</a></li>
-								<li class="dropdown-item"><a href="https://metacpan.org/pod/Type::Parser">Type::Parser</a></li>
-								<li class="dropdown-item"><a href="https://metacpan.org/pod/Eval::TypeTiny">Eval::TypeTiny</a></li>
-								<li class="dropdown-item"><a href="https://metacpan.org/pod/Test::TypeTiny">Test::TypeTiny</a></li>
+								<li class="dropdown-item"><a href="Type-Params.html">Type::Params</a></li>
+								<li class="dropdown-item"><a href="Type-Utils.html">Type::Utils</a></li>
+								<li class="dropdown-item"><a href="Type-Registry.html">Type::Registry</a></li>
+								<li class="dropdown-item"><a href="Type-Parser.html">Type::Parser</a></li>
+								<li class="dropdown-item"><a href="Eval-TypeTiny.html">Eval::TypeTiny</a></li>
+								<li class="dropdown-item"><a href="Test-TypeTiny.html">Test::TypeTiny</a></li>
 							</ul>
 						</li>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="ooapi">OO API<span class="caret"></span></a>
 							<ul class="dropdown-menu" aria-labelledby="ooapi">
-								<li class="dropdown-item"><a href="https://metacpan.org/pod/Type::Tiny">Type::Tiny</a></li>
-								<li class="dropdown-item"><a href="https://metacpan.org/pod/Type::Tiny::Class">Type::Tiny::Class</a></li>
-								<li class="dropdown-item"><a href="https://metacpan.org/pod/Type::Tiny::Duck">Type::Tiny::Duck</a></li>
-								<li class="dropdown-item"><a href="https://metacpan.org/pod/Type::Tiny::Enum">Type::Tiny::Enum</a></li>
-								<li class="dropdown-item"><a href="https://metacpan.org/pod/Type::Tiny::Intersection">Type::Tiny::Intersection</a></li>
-								<li class="dropdown-item"><a href="https://metacpan.org/pod/Type::Tiny::Role">Type::Tiny::Role</a></li>
-								<li class="dropdown-item"><a href="https://metacpan.org/pod/Type::Tiny::Union">Type::Tiny::Union</a></li>
+								<li class="dropdown-item"><a href="Type-Tiny.html">Type::Tiny</a></li>
+								<li class="dropdown-item"><a href="Type-Tiny-Class.html">Type::Tiny::Class</a></li>
+								<li class="dropdown-item"><a href="Type-Tiny-Duck.html">Type::Tiny::Duck</a></li>
+								<li class="dropdown-item"><a href="Type-Tiny-Enum.html">Type::Tiny::Enum</a></li>
+								<li class="dropdown-item"><a href="Type-Tiny-Intersection.html">Type::Tiny::Intersection</a></li>
+								<li class="dropdown-item"><a href="Type-Tiny-Role.html">Type::Tiny::Role</a></li>
+								<li class="dropdown-item"><a href="Type-Tiny-Union.html">Type::Tiny::Union</a></li>
 								<li class="dropdown-divider">-</li>
-								<li class="dropdown-item"><a href="https://metacpan.org/pod/Type::Coercion">Type::Coercion</a></li>
+								<li class="dropdown-item"><a href="Type-Coercion.html">Type::Coercion</a></li>
 								<li class="dropdown-divider">-</li>
-								<li class="dropdown-item"><a href="https://metacpan.org/pod/Type::Library">Type::Library</a></li>
+								<li class="dropdown-item"><a href="Type-Library.html">Type::Library</a></li>
 								<li class="dropdown-divider">-</li>
-								<li class="dropdown-item"><a href="https://metacpan.org/pod/Error::TypeTiny">Error::TypeTiny</a></li>
-								<li class="dropdown-item"><a href="https://metacpan.org/pod/Error::TypeTiny::Assertion">Error::TypeTiny::Assertion</a></li>
+								<li class="dropdown-item"><a href="Error-TypeTiny.html">Error::TypeTiny</a></li>
+								<li class="dropdown-item"><a href="Error-TypeTiny-Assertion.html">Error::TypeTiny::Assertion</a></li>
 							</ul>
 						</li>
 						<li class="nav-item dropdown">
@@ -136,6 +153,9 @@
 				</div>
 			</div>
 		</div>
+
+#FULLWIDTHBANNER#
+
 		<div class="container my-3">
 			<header class="row">
 				<div class="col-md-12">
