@@ -1,13 +1,4 @@
 <div class="card bg-secondary mb-3">
-<div class="card-header text-white">Useful Links</div>
-<ul class="list-group list-group-flush">
-<li class="list-group-item"><a href="https://metacpan.org/release/Type-Tiny">MetaCPAN</a></li>
-<li class="list-group-item"><a href="http://rt.cpan.org/Dist/Display.html?Queue=Type-Tiny">Request Tracker</a></li>
-<li class="list-group-item"><a href="https://metacpan.org/changes/distribution/Type-Tiny">Change Log</a></li>
-</ul>
-</div>
-
-<div class="card bg-secondary mb-3">
 <div class="card-header text-white">Developer Links</div>
 <ul class="list-group list-group-flush">
 <li class="list-group-item"><a href="https://github.com/tobyink/p5-type-tiny">GitHub</a></li>
