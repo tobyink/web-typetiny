@@ -79,6 +79,14 @@ for my $f (@files) {
 		}
 	});
 	
+	$dom->querySelectorAll('pre.highlighting-perl')->foreach(sub {
+		my $e = $_;
+		my $new = $dom->createElement('div');
+		$new->{class} = 'card p-3 my-3 bg-light';
+		$new->appendChild($e->cloneNode(1));
+		$e->replaceNode($new);
+	});
+	
 	my $title = '';
 	my $lede  = '';
 	my $main  = '';
@@ -132,9 +140,6 @@ for my $f (@files) {
 				id    => $e->querySelector('span')->{id},
 			};
 			$main .= "$e";
-		}
-		elsif ($e->nodeName eq 'pre') {
-			$main .= "<div class=\"card p-3 my-3 bg-light\">$e</div>";
 		}
 		else {
 			$main .= "$e";
