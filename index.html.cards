@@ -1,0 +1,19 @@
+<div class="card bg-secondary mb-3">
+<div class="card-header text-white">Useful Links</div>
+<ul class="list-group list-group-flush">
+<li class="list-group-item"><a href="https://metacpan.org/release/Type-Tiny">MetaCPAN</a></li>
+<li class="list-group-item"><a href="http://rt.cpan.org/Dist/Display.html?Queue=Type-Tiny">Request Tracker</a></li>
+</ul>
+</div>
+
+<div class="card bg-secondary mb-3">
+<div class="card-header text-white">Developer Links</div>
+<ul class="list-group list-group-flush">
+<li class="list-group-item"><a href="https://github.com/tobyink/p5-type-tiny">GitHub</a></li>
+<li class="list-group-item"><a href="https://travis-ci.org/tobyink/p5-type-tiny">Travis CI</a></li>
+<li class="list-group-item"><a href="https://ci.appveyor.com/project/tobyink/p5-type-tiny">AppVeyor</a></li>
+<li class="list-group-item"><a href="https://codecov.io/gh/tobyink/p5-type-tiny">Codecov</a></li>
+<li class="list-group-item"><a href="https://coveralls.io/github/tobyink/p5-type-tiny">Coveralls</a></li>
+</ul>
+</div>
+

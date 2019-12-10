@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet" href="assets/bootstrap.min.css" type="text/css">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+		<title>#NICETITLE#</title>
+		<meta name="description" value="#LEDE#">
+		<style type="text/css">
+			body { padding-top: 80px }
+			code { color: #666; font-weight: bold }
+			div.card pre { margin-bottom: 1px }
+			h2 span::before { 
+				display: block; 
+				content: " ";
+				margin-top: -80px; 
+				height: 80px; 
+				visibility: hidden; 
+				pointer-events: none;
+			}
+			.text-white a:link, .text-white a:visited {
+				color: inherit !important;
+				text-decoration: underline;
+			}
+			.text-white code {
+				color: #eee;
+			}
+			#return-to-top {
+				position: fixed;
+				bottom: 20px;
+				right: 20px;
+				background: rgb(108, 195, 213);
+				background: rgba(108, 195, 213, 0.7);
+				width: 50px;
+				height: 50px;
+				display: block;
+				text-decoration: none;
+				-webkit-border-radius: 35px;
+				-moz-border-radius: 35px;
+				border-radius: 35px;
+				display: none;
+				-webkit-transition: all 0.3s linear;
+				-moz-transition: all 0.3s ease;
+				-ms-transition: all 0.3s ease;
+				-o-transition: all 0.3s ease;
+				transition: all 0.3s ease;
+			}
+			#return-to-top i {
+				color: #fff;
+				margin: 0;
+				position: relative;
+				left: 16px;
+				top: 13px;
+				font-size: 19px;
+				-webkit-transition: all 0.3s ease;
+				-moz-transition: all 0.3s ease;
+				-ms-transition: all 0.3s ease;
+				-o-transition: all 0.3s ease;
+				transition: all 0.3s ease;
+			}
+			#return-to-top:hover {
+				background: rgba(108, 195, 213, 0.9);
+			}
+			#return-to-top:hover i {
+				color: #fff;
+				top: 5px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
+			<div class="container">
+				<a href="/" class="navbar-brand">Type::Tiny</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+				<div class="collapse navbar-collapse" id="navbarResponsive">
+					<ul class="navbar-nav">
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="manual">Manual <span class="caret"></span></a>
+							<ul class="dropdown-menu" aria-labelledby="manual">#MENU#</ul>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="libraries">Type Libraries <span class="caret"></span></a>
+							<ul class="dropdown-menu" aria-labelledby="libraries">
+								<li class="dropdown-item"><a href="https://metacpan.org/pod/Types::Standard">Types::Standard</a></li>
+								<li class="dropdown-item"><a href="https://metacpan.org/pod/Types::Common::String">Types::Common::String</a></li>
+								<li class="dropdown-item"><a href="https://metacpan.org/pod/Types::Numeric">Types::Common::Numeric</a></li>
+								<li class="dropdown-item"><a href="https://metacpan.org/pod/Types::TypeTiny">Types::TypeTiny</a></li>
+							</ul>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="utils">Utilities <span class="caret"></span></a>
+							<ul class="dropdown-menu" aria-labelledby="utils">
+								<li class="dropdown-item"><a href="https://metacpan.org/pod/Type::Params">Type::Params</a></li>
+								<li class="dropdown-item"><a href="https://metacpan.org/pod/Type::Utils">Type::Utils</a></li>
+								<li class="dropdown-item"><a href="https://metacpan.org/pod/Type::Registry">Type::Registry</a></li>
+								<li class="dropdown-item"><a href="https://metacpan.org/pod/Type::Parser">Type::Parser</a></li>
+								<li class="dropdown-item"><a href="https://metacpan.org/pod/Eval::TypeTiny">Eval::TypeTiny</a></li>
+								<li class="dropdown-item"><a href="https://metacpan.org/pod/Test::TypeTiny">Test::TypeTiny</a></li>
+							</ul>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="ooapi">OO API<span class="caret"></span></a>
+							<ul class="dropdown-menu" aria-labelledby="ooapi">
+								<li class="dropdown-item"><a href="https://metacpan.org/pod/Type::Tiny">Type::Tiny</a></li>
+								<li class="dropdown-item"><a href="https://metacpan.org/pod/Type::Tiny::Class">Type::Tiny::Class</a></li>
+								<li class="dropdown-item"><a href="https://metacpan.org/pod/Type::Tiny::Duck">Type::Tiny::Duck</a></li>
+								<li class="dropdown-item"><a href="https://metacpan.org/pod/Type::Tiny::Enum">Type::Tiny::Enum</a></li>
+								<li class="dropdown-item"><a href="https://metacpan.org/pod/Type::Tiny::Intersection">Type::Tiny::Intersection</a></li>
+								<li class="dropdown-item"><a href="https://metacpan.org/pod/Type::Tiny::Role">Type::Tiny::Role</a></li>
+								<li class="dropdown-item"><a href="https://metacpan.org/pod/Type::Tiny::Union">Type::Tiny::Union</a></li>
+								<li class="dropdown-divider">-</li>
+								<li class="dropdown-item"><a href="https://metacpan.org/pod/Type::Coercion">Type::Coercion</a></li>
+								<li class="dropdown-divider">-</li>
+								<li class="dropdown-item"><a href="https://metacpan.org/pod/Type::Library">Type::Library</a></li>
+								<li class="dropdown-divider">-</li>
+								<li class="dropdown-item"><a href="https://metacpan.org/pod/Error::TypeTiny">Error::TypeTiny</a></li>
+								<li class="dropdown-item"><a href="https://metacpan.org/pod/Error::TypeTiny::Assertion">Error::TypeTiny::Assertion</a></li>
+							</ul>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="links">Links <span class="caret"></span></a>
+							<ul class="dropdown-menu" aria-labelledby="links">
+								<li class="dropdown-item"><a href="https://metacpan.org/release/Type-Tiny">MetaCPAN</a></li>
+								<li class="dropdown-item"><a href="http://rt.cpan.org/Dist/Display.html?Queue=Type-Tiny">RT</a></li>
+								<li class="dropdown-divider">-</li>
+								<li class="dropdown-item"><a href="https://github.com/tobyink/p5-type-tiny">GitHub</a></li>
+								<li class="dropdown-item"><a href="https://travis-ci.org/tobyink/p5-type-tiny">Travis CI</a></li>
+								<li class="dropdown-item"><a href="https://ci.appveyor.com/project/tobyink/p5-type-tiny">AppVeyor</a></li>
+								<li class="dropdown-item"><a href="https://codecov.io/gh/tobyink/p5-type-tiny">Codecov</a></li>
+								<li class="dropdown-item"><a href="https://coveralls.io/github/tobyink/p5-type-tiny">Coveralls</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="container my-3">
+			<header class="row">
+				<div class="col-md-12">
+					<div class="jumbotron w-100">
+						<h1>#NICETITLE#</h1>
+						<p class="lead">#LEDE#</p>
+					</div>
+				</div>
+			</header>
+			<div class="row">
+				<main class="col-md-9">
+
+#CONTENT#
+
+
+				</main>
+				<div class="col-md-3">
+
+
+#CARDS#
+
+
+				</div>
+			</div>
+			<footer class="row">
+				<div class="col-md-12 text-md-center bg-light p-3 mt-5 mb-3">
+					<p>#TITLE# version #VERSION#</p>
+					<p>&copy; 2019 Toby Inkster. Some rights reserved.</p>
+				</div>
+			</footer>		
+		</div>
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+		<a href="javascript:" id="return-to-top"><i class="fa fa-arrow-up"></i></a>
+		<script type="text/javascript">
+			$(window).scroll(function() {
+				if ($(this).scrollTop() >= 50) {
+					$('#return-to-top').fadeIn(200);
+				}
+				else {
+					$('#return-to-top').fadeOut(200);
+				}
+			});
+			$('#return-to-top').click(function() {
+				$('body,html').animate({ scrollTop : 0 }, 500);
+			});
+		</script>
+	</body>
+</html>

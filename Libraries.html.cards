@@ -1,0 +1,6 @@
+<div class="card bg-secondary mb-3">
+<div class="card-header text-white">Useful Links</div>
+<ul class="list-group list-group-flush">
+<li class="list-group-item"><a href="https://metacpan.org/pod/Type::Library">Type::Library</a></li>
+</ul>
+</div>
