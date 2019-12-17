@@ -108,7 +108,11 @@ my $template = $destdir->child('build/template.html')->slurp_utf8;
 
 my $html5_pp      = XML::LibXML::PrettyPrint->new_for_html();
 my $html5_parser  = HTML::HTML5::Parser->new;
-my $html5_writer  = HTML::HTML5::Writer->new;
+my $html5_writer  = HTML::HTML5::Writer->new(
+	doctype => HTML::HTML5::Writer::DOCTYPE_HTML5."\n",
+);
+
+push @{$html5_pp->{element}{block}}, 'main';
 
 for my $f (@files) {
 	my $srcfile   = $srcdir->child($f);
@@ -307,12 +311,13 @@ for my $f (@files) {
 	$page =~ s/#VERSION#/Type::Tiny->VERSION/e;
 	$page =~ s/#PAGECLASS#/$pageclass/;
 	$page =~ s/#FULLWIDTHBANNER#/$banner/;
-	
+	$page =~ s{<span id="___top"/>}{};   # this screws up things
+
 	eval {
 		my $final_dom = fix_document( $html5_parser->parse_string($page) );
 		$html5_pp->pretty_print($final_dom);
 		$page = $html5_writer->document($final_dom);
-	};
+	} or warn "error pretty-printing for $destfile\n";
 	
 	$destfile->spew_utf8($page);
 }
