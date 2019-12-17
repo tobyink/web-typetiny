@@ -142,12 +142,12 @@ for my $f (@files) {
 				$_->{href} = '/';
 			}
 			elsif ($man =~ m'Type::Tiny::Manual::(.+)') {
-				$_->{href} = "/$1\.html";
+				$_->{href} = "$1\.html";
 			}
 			elsif ($known{$man}) {
 				my $html = $man;
 				$html =~ s/::/-/g;
-				$_->{href} = "/$html\.html";
+				$_->{href} = "$html\.html";
 			}
 			else {
 				$_->{href} = "https://metacpan.org/pod/$man";
