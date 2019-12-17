@@ -96,7 +96,7 @@ my %known = map {
 
 my $menu = join '', map {
 	my ($f) = m{\/([^/]+)\.pod$};
-	sprintf('<li class="dropdown-item"><a href="%s">%s</a></li>', $f eq 'Manual' ? '/' : "/$f.html", $f);
+	sprintf('<li class="dropdown-item"><a href="%s">%s</a></li>', $f eq 'Manual' ? '/' : "$f.html", $f);
 } grep /Manual\//, @files;
 
 my $parser = TOBYINK::Pod::HTML->new(
