@@ -9,6 +9,10 @@ use HTML::Entities qw(encode_entities);
 use Lingua::EN::Titlecase;
 use Path::Tiny qw(path);
 use Type::Tiny;
+use XML::LibXML::PrettyPrint;
+use HTML::HTML5::Writer;
+use HTML::HTML5::Parser;
+use HTML::HTML5::Sanity qw(fix_document);
 
 my $srcdir  = path('/home/tai/src/p5/p5-type-tiny/lib/');
 my $destdir = path($Bin)->parent;
@@ -101,6 +105,10 @@ my $parser = TOBYINK::Pod::HTML->new(
 );
 
 my $template = $destdir->child('build/template.html')->slurp_utf8;
+
+my $html5_pp      = XML::LibXML::PrettyPrint->new_for_html();
+my $html5_parser  = HTML::HTML5::Parser->new;
+my $html5_writer  = HTML::HTML5::Writer->new;
 
 for my $f (@files) {
 	my $srcfile   = $srcdir->child($f);
@@ -299,7 +307,14 @@ for my $f (@files) {
 	$page =~ s/#VERSION#/Type::Tiny->VERSION/e;
 	$page =~ s/#PAGECLASS#/$pageclass/;
 	$page =~ s/#FULLWIDTHBANNER#/$banner/;
-	$destfile->spew($page);
+	
+	eval {
+		my $final_dom = fix_document( $html5_parser->parse_string($page) );
+		$html5_pp->pretty_print($final_dom);
+		$page = $html5_writer->document($final_dom);
+	};
+	
+	$destfile->spew_utf8($page);
 }
 
 system(
