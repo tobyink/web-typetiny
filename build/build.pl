@@ -23,7 +23,7 @@ if ($version =~ /^(.+)\.(...)(...)/ and $2 % 2) {
 	$version = "$1\.$2\_$3";
 }
 
-my $stable_version = '1.008000';
+my $stable_version = '1.008005';
 
 # chdir $srcdir; find -type f | grep Manual
 my @files = map substr($_, 2), qw(
@@ -178,18 +178,18 @@ for my $f (@files) {
 			'<div class="card-header">Get Type::Tiny</div>' .
 			'<div class="card-body">' .
 			sprintf('<p>Type::Tiny&nbsp;%s is available on CPAN.</p>', $version) . 
-			( $stable_version eq $version
+			( $stable_version lt $version
 				? sprintf(
-					'<p style="font-size:85%%"><a style="text-decoration:none!important" href="https://cpan.metacpan.org/authors/id/T/TO/TOBYINK/Type-Tiny-%s.tar.gz"><i class="fa fa-download"></i> <b>Version %s</b></a></p>',
-					$stable_version,
-					$stable_version,
-				)
-				: sprintf(
 					'<p style="font-size:85%%"><a style="text-decoration:none!important" href="https://cpan.metacpan.org/authors/id/T/TO/TOBYINK/Type-Tiny-%s.tar.gz"><i class="fa fa-download"></i> <b>Stable version %s</b></a><br><a style="text-decoration:none!important" href="https://cpan.metacpan.org/authors/id/T/TO/TOBYINK/Type-Tiny-%s.tar.gz"><i class="fa fa-download"></i> <b>Trial version %s</b></a></p>',
 					$stable_version,
 					$stable_version,
 					$version,
 					$version,
+				)
+				: sprintf(
+					'<p style="font-size:85%%"><a style="text-decoration:none!important" href="https://cpan.metacpan.org/authors/id/T/TO/TOBYINK/Type-Tiny-%s.tar.gz"><i class="fa fa-download"></i> <b>Version %s</b></a></p>',
+					$stable_version,
+					$stable_version,
 				)
 			).
 			"</div></div>\n";
