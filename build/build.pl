@@ -281,7 +281,7 @@ for my $f (@files) {
 		) .
 		"</div>\n" if @toc;
 	
-	$cards .= path("$destfile.cards")->slurp_utf8 if -f "$destfile.cards";
+	$cards .= path("cards/$destfile.cards")->slurp_utf8 if -f "cards/$destfile.cards";
 	
 	$main .= 
 		'<div class="card bg-dark text-white mb-3">' .
