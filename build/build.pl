@@ -16,14 +16,14 @@ use HTML::HTML5::Sanity qw(fix_document);
 
 my $srcdir  = path('/home/tai/src/p5/p5-type-tiny/lib/');
 my $destdir = path($Bin)->parent;
-my $upload  = 'server:vhosts/typetiny.toby.ink';
+my $upload  = 'web:sites/typetiny.toby.ink';
 
 my $version = Type::Tiny->VERSION;
 if ($version =~ /^(.+)\.(...)(...)/ and $2 % 2) {
 	$version = "$1\.$2\_$3";
 }
 
-my $stable_version = '1.010001';
+my $stable_version = '1.010004';
 
 # chdir $srcdir; find -type f | grep Manual
 my @files = map substr($_, 2), qw(
