@@ -16,6 +16,14 @@
 </div>
 </div>
 
+<div class="card border-primary mb-3">
+<div class="card-header">Donate!</div>
+<div class="card-body">
+<p>If you'd like to donate just a few dollars/euros/pounds to help this project, you can on
+<a href="https://ko-fi.com/tobyink">Ko-fi</a> or <a href="https://paypal.me/tobyink">PayPal</a>.</p>
+</div>
+</div>
+
 <div class="card bg-secondary mb-3">
 <div class="card-header">Useful Links</div>
 <ul class="list-group list-group-flush">
