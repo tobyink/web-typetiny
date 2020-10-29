@@ -94,10 +94,30 @@ my %known = map {
 	$pod => 1;
 } @files;
 
+push @files, qw(
+	/home/tai/src/p5/p5-exporter-tiny/lib/Exporter/Shiny.pm
+	/home/tai/src/p5/p5-exporter-tiny/lib/Exporter/Tiny.pm
+	/home/tai/src/p5/p5-exporter-tiny/lib/Exporter/Tiny/Manual/QuickStart.pod
+	/home/tai/src/p5/p5-exporter-tiny/lib/Exporter/Tiny/Manual/Exporting.pod
+	/home/tai/src/p5/p5-exporter-tiny/lib/Exporter/Tiny/Manual/Importing.pod
+	/home/tai/src/p5/p5-exporter-tiny/lib/Exporter/Tiny/Manual/Etc.pod
+	/home/tai/src/p5/p5-type-tie/lib/Type/Tie.pm
+	/home/tai/perl5/perlbrew/perls/perl-5.26.2/lib/site_perl/5.26.2/Types/Path/Tiny.pm
+);
+
+$known{'Exporter::Tiny'}    = 'Exporter-Tiny';
+$known{'Exporter::Shiny'}   = 'Exporter-Shiny';
+$known{'Exporter::Tiny::Manual::QuickStart'} = 'Exporter-Tiny-Manual-QuickStart';
+$known{'Exporter::Tiny::Manual::Exporting'}  = 'Exporter-Tiny-Manual-Exporting';
+$known{'Exporter::Tiny::Manual::Importing'}  = 'Exporter-Tiny-Manual-Importing';
+$known{'Exporter::Tiny::Manual::Etc'}        = 'Exporter-Tiny-Manual-Etc';
+$known{'Type::Tie'}         = 'Type-Tie';
+$known{'Types::Path::Tiny'} = 'Types-Path-Tiny';
+
 my $menu = join '', map {
 	my ($f) = m{\/([^/]+)\.pod$};
 	sprintf('<li class="dropdown-item"><a href="%s">%s</a></li>', $f eq 'Manual' ? '/' : "$f.html", $f);
-} grep /Manual\//, @files;
+} grep /Type.Tiny.Manual\//, @files;
 
 my $parser = TOBYINK::Pod::HTML->new(
 	code_highlighting => 1,
@@ -115,7 +135,7 @@ my $html5_writer  = HTML::HTML5::Writer->new(
 push @{$html5_pp->{element}{block}}, 'main';
 
 for my $f (@files) {
-	my $srcfile   = $srcdir->child($f);
+	my $srcfile   = ( $f =~ /^\//  ) ? path($f) : $srcdir->child($f);
 	my $pageclass;
 	my $destfile  = do {
 		$f =~ s/Type.Tiny.Manual.//;
@@ -144,10 +164,13 @@ for my $f (@files) {
 			elsif ($man =~ m'Type::Tiny::Manual::(.+)') {
 				$_->{href} = "$1\.html";
 			}
-			elsif ($known{$man}) {
+			elsif (defined $known{$man} and $known{$man} eq '1') {
 				my $html = $man;
 				$html =~ s/::/-/g;
 				$_->{href} = "$html\.html";
+			}
+			elsif (defined $known{$man}) {
+				$_->{href} = $known{$man} . '.html';
 			}
 			else {
 				$_->{href} = "https://metacpan.org/pod/$man";
@@ -194,7 +217,15 @@ for my $f (@files) {
 			).
 			"</div></div>\n";
 	}
-	elsif ($f =~ /-/) {
+	elsif ( $f =~ /^-/ ) {
+		$cards .= 
+			'<div class="card bg-secondary mb-3">' .
+			'<div class="card-header">External Module</div>' .
+			'<div class="card-body">' .
+			sprintf('This module is not included in the base Type::Tiny distribution. It needs installing from <a href="https://metacpan.org/">the CPAN</a> separately.') . 
+			"</div></div>\n";
+	}
+	elsif ( $f =~ /-/ ) {
 		$cards .= 
 			'<div class="card bg-secondary mb-3">' .
 			'<div class="card-header">Manual</div>' .
@@ -250,6 +281,10 @@ for my $f (@files) {
 		else {
 			$main .= "$e";
 		}
+	}
+	
+	if ( defined $known{$title} and not $known{$title} eq '1' ) {
+		$destfile = path( $known{$title} . '.html' );
 	}
 	
 	$cards .=
