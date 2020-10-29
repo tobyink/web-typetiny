@@ -219,8 +219,8 @@ for my $f (@files) {
 	}
 	elsif ( $f =~ /^-/ ) {
 		$cards .= 
-			'<div class="card bg-secondary mb-3">' .
-			'<div class="card-header">External Module</div>' .
+			'<div class="card mb-3 border-warning">' .
+			'<div class="card-header bg-warning text-white">External Module</div>' .
 			'<div class="card-body">' .
 			sprintf('This module is not included in the base Type::Tiny distribution. It needs installing from <a href="https://metacpan.org/">the CPAN</a> separately.') . 
 			"</div></div>\n";
