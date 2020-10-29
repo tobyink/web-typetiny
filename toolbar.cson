@@ -1,0 +1,16 @@
+[
+  {
+    type: "button"
+    tooltip: "Make"
+    callback: "make:all"
+    icon: "cogs"
+    iconset: "fa"
+  }
+  {
+    type: "url"
+    tooltip: "Open"
+    url: "https://typetiny.toby.ink/"
+    icon: "globe"
+    iconset: "fa"
+  }
+]
