@@ -12,17 +12,9 @@
 <div class="card bg-primary mb-3">
 <div class="card-header">Development Status</div>
 <div class="card-body">
-<p><img src="https://travis-ci.org/tobyink/p5-type-tiny.svg?branch=master" alt="Travis CI status" title="Travis CI status"><br>
-<img src="https://ci.appveyor.com/api/projects/status/4woo4lq9d609ik14/branch/master?svg=true" alt="AppVeyor status" title="AppVeyor status"><br>
+<p><img src="https://img.shields.io/github/issues/tobyink/p5-type-tiny" alt="GitHub Issues" title="GitHub Issues"><br>
+<img src="https://github.com/tobyink/p5-type-tiny/workflows/CI/badge.svg" alt="GitHub Actions" title="GitHub Actions"><br>
 <img src="https://coveralls.io/repos/github/tobyink/p5-type-tiny/badge.svg?branch=master" alt="Coveralls status" title="Coveralls status"><br>
 <img src="https://codecov.io/gh/tobyink/p5-type-tiny/branch/master/graph/badge.svg" alt="Codecov status" title="Codecov status"></p>
-<p>
-<a href="https://rt.cpan.org/Dist/Display.html?Status=Active;Queue=Type-Tiny"><img src="https://img.shields.io/badge/dynamic/json?color=critical&label=new%20tickets&query=%24.bugs.rt.new&url=https%3A%2F%2Ffastapi.metacpan.org%2Fv1%2Fdistribution%2FType-Tiny" alt="new tickets" title="new tickets"></a><br>
-<a href="https://rt.cpan.org/Dist/Display.html?Status=Active;Queue=Type-Tiny"><img src="https://img.shields.io/badge/dynamic/json?color=critical&label=open%20tickets&query=%24.bugs.rt.open&url=https%3A%2F%2Ffastapi.metacpan.org%2Fv1%2Fdistribution%2FType-Tiny" alt="open tickets" title="open tickets"></a><br>
-<a href="https://rt.cpan.org/Dist/Display.html?Status=Active;Queue=Type-Tiny"><img src="https://img.shields.io/badge/dynamic/json?color=inactive&label=stalled%20tickets&query=%24.bugs.rt.stalled&url=https%3A%2F%2Ffastapi.metacpan.org%2Fv1%2Fdistribution%2FType-Tiny" alt="stalled tickets" title="stalled tickets"></a><br>
-<a href="https://rt.cpan.org/Dist/Display.html?Status=Active;Queue=Type-Tiny"><img src="https://img.shields.io/badge/dynamic/json?color=inactive&label=patched%20tickets&query=%24.bugs.rt.patched&url=https%3A%2F%2Ffastapi.metacpan.org%2Fv1%2Fdistribution%2FType-Tiny" alt="patched tickets" title="patched tickets"></a><br>
-<a href="https://rt.cpan.org/Dist/Display.html?Status=Rejected;Queue=Type-Tiny"><img src="https://img.shields.io/badge/dynamic/json?color=informational&label=rejected%20tickets&query=%24.bugs.rt.rejected&url=https%3A%2F%2Ffastapi.metacpan.org%2Fv1%2Fdistribution%2FType-Tiny" alt="rejected tickets" title="rejected tickets"></a><br>
-<a href="https://rt.cpan.org/Dist/Display.html?Status=Resolved;Queue=Type-Tiny"><img src="https://img.shields.io/badge/dynamic/json?color=success&label=resolved%20tickets&query=%24.bugs.rt.resolved&url=https%3A%2F%2Ffastapi.metacpan.org%2Fv1%2Fdistribution%2FType-Tiny" alt="resolved tickets" title="resolved tickets"></a>
-</p>
 </div>
 </div>
