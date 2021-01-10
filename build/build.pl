@@ -23,7 +23,7 @@ if ($version =~ /^(.+)\.(...)(...)/ and $2 % 2) {
 	$version = "$1\.$2\_$3";
 }
 
-my $stable_version = '1.012000';
+my $stable_version = '1.012001';
 
 # chdir $srcdir; find -type f | grep Manual
 my @files = map substr($_, 2), qw(

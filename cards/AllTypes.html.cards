@@ -1,10 +1,10 @@
 <div class="card bg-secondary mb-3">
 <div class="card-header">Bundled Libraries</div>
 <ul class="list-group list-group-flush">
-<li class="list-group-item"><a href="https://metacpan.org/pod/Types::Standard">Types::Standard</a></li>
-<li class="list-group-item"><a href="https://metacpan.org/pod/Types::Common::String">Types::Common::String</a></li>
-<li class="list-group-item"><a href="https://metacpan.org/pod/Types::Common::Numeric">Types::Common::Numeric</a></li>
-<li class="list-group-item"><a href="https://metacpan.org/pod/Types::TypeTiny">Types::TypeTiny</a></li>
+<li class="list-group-item"><a href="/Types-Standard.html">Types::Standard</a></li>
+<li class="list-group-item"><a href="/Types-Common-String.html">Types::Common::String</a></li>
+<li class="list-group-item"><a href="/Types-Common-Numeric.html">Types::Common::Numeric</a></li>
+<li class="list-group-item"><a href="/Types-TypeTiny.html">Types::TypeTiny</a></li>
 </ul>
 </div>
 
