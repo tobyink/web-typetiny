@@ -336,6 +336,16 @@ for my $f (@files) {
 		$banner = '<img class="fullwidth" src="/assets/banner.jpeg" alt="">';
 	}
 	
+	my $vvv = 'Type::Tiny'->VERSION;
+	if ( $title =~ /^Type::Tie\b/ ) {
+		require Type::Tie;
+		$vvv = 'Type::Tie'->VERSION;
+	}
+	elsif ( $title =~ /^Exporter::Tiny\b/ ) {
+		require Exporter::Tiny;
+		$vvv = 'Exporter::Tiny'->VERSION;
+	}
+	
 	my $page = $template;
 	$page =~ s/#TITLE#/$title/g;
 	$page =~ s/#NICETITLE#/$nicetitle/g;
@@ -343,7 +353,7 @@ for my $f (@files) {
 	$page =~ s/#CONTENT#/$main/;
 	$page =~ s/#CARDS#/$cards/;
 	$page =~ s/#MENU#/$menu/;
-	$page =~ s/#VERSION#/Type::Tiny->VERSION/e;
+	$page =~ s/#VERSION#/$vvv/e;
 	$page =~ s/#PAGECLASS#/$pageclass/;
 	$page =~ s/#FULLWIDTHBANNER#/$banner/;
 	$page =~ s{<span id="___top"/>}{};   # this screws up things
