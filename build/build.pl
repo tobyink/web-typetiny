@@ -23,7 +23,11 @@ if ($version =~ /^(.+)\.(...)(...)/ and $2 % 2) {
 	$version = "$1\.$2\_$3";
 }
 
-my $stable_version = '1.012001';
+my $stable_version = '1.016005';
+
+if ( $version !~ /_/ and $version gt $stable_version ) {
+	$stable_version = $version;
+}
 
 # chdir $srcdir; find -type f | grep Manual
 my @files = map substr($_, 2), qw(
@@ -36,6 +40,7 @@ my @files = map substr($_, 2), qw(
 	./Type/Tiny/Manual/UsingWithMoose.pod
 	./Type/Tiny/Manual/UsingWithMouse.pod
 	./Type/Tiny/Manual/UsingWithClassTiny.pod
+	./Type/Tiny/Manual/UsingWithMite.pod
 	./Type/Tiny/Manual/UsingWithOther.pod
 	./Type/Tiny/Manual/UsingWithTestMore.pod
 	./Type/Tiny/Manual/Params.pod
@@ -102,7 +107,8 @@ push @files, qw(
 	/home/tai/src/p5/p5-exporter-tiny/lib/Exporter/Tiny/Manual/Importing.pod
 	/home/tai/src/p5/p5-exporter-tiny/lib/Exporter/Tiny/Manual/Etc.pod
 	/home/tai/src/p5/p5-type-tie/lib/Type/Tie.pm
-	/home/tai/perl5/perlbrew/perls/perl-5.26.2/lib/site_perl/5.26.2/Types/Path/Tiny.pm
+	/home/tai/perl5/perlbrew/perls/perl-5.34.0/lib/site_perl/5.34.0/Types/Path/Tiny.pm
+	/home/tai/perl5/perlbrew/perls/perl-5.34.0/lib/site_perl/5.34.0/Types/Self.pm
 );
 
 $known{'Exporter::Tiny'}    = 'Exporter-Tiny';
@@ -113,6 +119,7 @@ $known{'Exporter::Tiny::Manual::Importing'}  = 'Exporter-Tiny-Manual-Importing';
 $known{'Exporter::Tiny::Manual::Etc'}        = 'Exporter-Tiny-Manual-Etc';
 $known{'Type::Tie'}         = 'Type-Tie';
 $known{'Types::Path::Tiny'} = 'Types-Path-Tiny';
+$known{'Types::Self'} = 'Types-Self';
 
 my $menu = join '', map {
 	my ($f) = m{\/([^/]+)\.pod$};
@@ -327,8 +334,8 @@ for my $f (@files) {
 	
 	my $nicetitle = $title;
 	if ($nicetitle =~ /Manual/) {
-		$nicetitle =~ s/::/&nbsp;» /g;
-		$nicetitle =~ s/&nbsp;»\s/::/;
+		$nicetitle =~ s/::/&nbsp;&raquo; /g;
+		$nicetitle =~ s/&nbsp;&raquo;\s/::/;
 	}
 	
 	my $banner = '';

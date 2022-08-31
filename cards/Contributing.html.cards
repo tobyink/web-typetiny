@@ -2,8 +2,7 @@
 <div class="card-header">Developer Links</div>
 <ul class="list-group list-group-flush">
 <li class="list-group-item"><a href="https://github.com/tobyink/p5-type-tiny">GitHub</a></li>
-<li class="list-group-item"><a href="https://travis-ci.org/tobyink/p5-type-tiny">Travis CI</a></li>
-<li class="list-group-item"><a href="https://ci.appveyor.com/project/tobyink/p5-type-tiny">AppVeyor</a></li>
+<li class="list-group-item"><a href="https://github.com/tobyink/p5-type-tiny/issues">Issue Tracker</a></li>
 <li class="list-group-item"><a href="https://codecov.io/gh/tobyink/p5-type-tiny">Codecov</a></li>
 <li class="list-group-item"><a href="https://coveralls.io/github/tobyink/p5-type-tiny">Coveralls</a></li>
 </ul>
