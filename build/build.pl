@@ -23,7 +23,7 @@ if ($version =~ /^(.+)\.(...)(...)/ and $2 % 2) {
 	$version = "$1\.$2\_$3";
 }
 
-my $stable_version = '1.016005';
+my $stable_version = '1.016010';
 
 if ( $version !~ /_/ and $version gt $stable_version ) {
 	$stable_version = $version;
@@ -51,13 +51,13 @@ my @files = map substr($_, 2), qw(
 	./Type/Tiny/Manual/Policies.pod
 	./Type/Tiny/Manual/Contributing.pod
 	
-	./Devel/TypeTiny/Perl56Compat.pm
 	./Devel/TypeTiny/Perl58Compat.pm
 	./Error/TypeTiny/Assertion.pm
 	./Error/TypeTiny/Compilation.pm
 	./Error/TypeTiny.pm
 	./Error/TypeTiny/WrongNumberOfParameters.pm
 	./Eval/TypeTiny.pm
+	./Eval/TypeTiny/CodeAccumulator.pm
 	./Reply/Plugin/TypeTiny.pm
 	./Test/TypeTiny.pm
 	./Type/Coercion/FromMoose.pm
@@ -67,6 +67,7 @@ my @files = map substr($_, 2), qw(
 	./Type/Params.pm
 	./Type/Parser.pm
 	./Type/Registry.pm
+	./Types/Common.pm
 	./Types/Common/Numeric.pm
 	./Types/Common/String.pm
 	./Types/Standard/ArrayRef.pm
@@ -242,6 +243,7 @@ for my $f (@files) {
 	}
 	
 	my @kids = $dom->querySelector('body')->childNodes;
+	my ( $sec, $ssec, $sssec );
 	LOOP: while (@kids) {
 		my $e = shift @kids;
 		if ($e->nodeName eq 'h1' and $e->textContent eq 'NAME') {
@@ -264,22 +266,35 @@ for my $f (@files) {
 		elsif ($e->nodeName eq 'h1') {
 			my $heading = Lingua::EN::Titlecase->new($e->textContent);
 			$e->setNodeName('h2');
-			$e->querySelector('span')->childNodes->[0]->setData($heading->title);
+			$e->querySelector('span')->childNodes->[0]->setData( $heading->title =~ s/\bApi\b/API/gr );
 			push @toc, {
 				title => $e->textContent,
 				id    => $e->querySelector('span')->{id},
+				subheadings => ( $sec = [] ),
 			};
 			$main .= "$e";
 		}
 		elsif ($e->nodeName eq 'h2') {
-			push @toc, {
+			$e->setNodeName('h3');
+			push @$sec, {
 				title => $e->textContent,
 				id    => $e->querySelector('span')->{id},
+				subheadings => ( $ssec = [] ),
 			};
 			$main .= "$e";
 		}
 		elsif ($e->nodeName eq 'h3') {
-			push @{$toc[-1]{subheadings}||=[]}, {
+			$e->setNodeName('h4');
+			push @$ssec, {
+				title => $e->textContent,
+				id    => $e->querySelector('span')->{id},
+				subheadings => ( $sssec = [] ),
+			};
+			$main .= "$e";
+		}
+		elsif ($e->nodeName eq 'h4') {
+			$e->setNodeName('h5');
+			push @$sssec, {
 				title => $e->textContent,
 				id    => $e->querySelector('span')->{id},
 			};
@@ -294,30 +309,36 @@ for my $f (@files) {
 		$destfile = path( $known{$title} . '.html' );
 	}
 	
+	my $SH;
+	$SH = sub {
+		my $h = shift;
+		my $sh = '';
+		if ( @{ $h->{subheadings} || [] } ) {
+			$sh .= '<ul class="list-subgroup">';
+			$sh .= join '', map {
+				sprintf(
+					'<li class="list-subgroup-item"><a href="#%s">%s</a>%s</li>',
+					encode_entities($_->{id}),
+					encode_entities($_->{title}),
+					$SH->($_),
+				);
+			} @{$h->{subheadings}};
+			$sh .= '</ul>';
+		}
+		return $sh;
+	};
+
 	$cards .=
-		'<div class="card bg-primary mb-3">' .
+		'<div class="card bg-primary mb-3 contents-card">' .
 		'<div class="card-header">Contents</div>' .
 		sprintf(
 			'<ul class="list-group list-group-flush">%s</ul>',
 			join '', map {
-				my $h = $_;
-				my $sh = '';
-				if ($h->{subheadings}) {
-					$sh .= '<ul class="list-subgroup">';
-					$sh .= join '', map {
-						sprintf(
-							'<li class="list-subgroup-item"><a href="#%s">%s</a></li>',
-							encode_entities($_->{id}),
-							encode_entities($_->{title}),
-						);
-					} @{$h->{subheadings}};
-					$sh .= '</ul>';
-				}
 				sprintf(
 					'<li class="list-group-item"><a href="#%s">%s</a>%s</li>',
-					encode_entities($h->{id}),
-					encode_entities($h->{title}),
-					$sh,
+					encode_entities($_->{id}),
+					encode_entities($_->{title}),
+					$SH->($_),
 				);
 			} @toc,
 		) .

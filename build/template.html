@@ -86,12 +86,16 @@
 				color: #fff;
 				top: 5px;
 			}
-			.list-subgroup {
+			.contents-card .list-group-item > a, .contents-card .card-header {
+				font-weight: bold;
+			}
+			.contents-card .list-subgroup {
 				padding-inline-start: 20px;
 			}
-			.list-subgroup-item {
-				font-size: 85%;
+			.contents-card .list-subgroup-item .list-subgroup-item {
+				font-size: 90%;
 			}
+			dd { padding-left: 20px }
 		</style>
 	</head>
 	<body class="page-#PAGECLASS#">
@@ -108,6 +112,8 @@
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="libraries">Type Libraries <span class="caret"></span></a>
 							<ul class="dropdown-menu" aria-labelledby="libraries">
+								<li class="dropdown-item"><a href="Types-Common.html">Types::Common</a></li>
+								<li class="dropdown-divider">-</li>
 								<li class="dropdown-item"><a href="Types-Standard.html">Types::Standard</a></li>
 								<li class="dropdown-item"><a href="Types-Common-String.html">Types::Common::String</a></li>
 								<li class="dropdown-item"><a href="Types-Common-Numeric.html">Types::Common::Numeric</a></li>
