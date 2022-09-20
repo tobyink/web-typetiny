@@ -67,6 +67,7 @@ my @files = map substr($_, 2), qw(
 	./Type/Params.pm
 	./Type/Parser.pm
 	./Type/Registry.pm
+	./Type/Tie.pm
 	./Types/Common.pm
 	./Types/Common/Numeric.pm
 	./Types/Common/String.pm
