@@ -51,7 +51,6 @@ my @files = map substr($_, 2), qw(
 	./Type/Tiny/Manual/Policies.pod
 	./Type/Tiny/Manual/Contributing.pod
 	
-	./Devel/TypeTiny/Perl58Compat.pm
 	./Error/TypeTiny/Assertion.pm
 	./Error/TypeTiny/Compilation.pm
 	./Error/TypeTiny.pm
@@ -71,16 +70,7 @@ my @files = map substr($_, 2), qw(
 	./Types/Common.pm
 	./Types/Common/Numeric.pm
 	./Types/Common/String.pm
-	./Types/Standard/ArrayRef.pm
-	./Types/Standard/CycleTuple.pm
-	./Types/Standard/Dict.pm
-	./Types/Standard/HashRef.pm
-	./Types/Standard/Map.pm
 	./Types/Standard.pm
-	./Types/Standard/ScalarRef.pm
-	./Types/Standard/StrMatch.pm
-	./Types/Standard/Tied.pm
-	./Types/Standard/Tuple.pm
 	./Types/TypeTiny.pm
 	./Type/Tiny/Class.pm
 	./Type/Tiny/ConstrainedObject.pm
@@ -164,7 +154,7 @@ for my $f (@files) {
 		if ($_->{href} =~ m{^https?://metacpan\.org/pod/(.+)$}) {
 			my $man = $1;
 			my $anchor;
-			($man, $anchor) = split /#/, $man;
+			($man, $anchor) = split '#', $man;
 			$man =~ s/%3A/:/g;
 			if ($man eq 'Type::Tiny::Manual') {
 				$_->{href} = '/';
@@ -242,6 +232,7 @@ for my $f (@files) {
 			"</div></div>\n";
 	}
 	
+	my $has_manual;
 	my @kids = $dom->querySelector('body')->childNodes;
 	my ( $sec, $ssec, $sssec );
 	LOOP: while (@kids) {
@@ -260,10 +251,8 @@ for my $f (@files) {
 				$ns .= shift @kids;
 			}
 		}
-		elsif ($e->nodeName eq 'h1' and $e->textContent eq 'MANUAL' and $f ne 'index.html') {
-			# skip
-		}
 		elsif ($e->nodeName eq 'h1') {
+			$e->textContent eq 'MANUAL' and $f ne 'index.html' and $has_manual = @toc;
 			my $heading = Lingua::EN::Titlecase->new($e->textContent);
 			$e->setNodeName('h2');
 			$e->querySelector('span')->childNodes->[0]->setData( $heading->title =~ s/\bApi\b/API/gr );
@@ -307,6 +296,11 @@ for my $f (@files) {
 	
 	if ( defined $known{$title} and not $known{$title} eq '1' ) {
 		$destfile = path( $known{$title} . '.html' );
+	}
+	
+	if ( defined $has_manual ) {
+		my @manual_headings = @{ $toc[$has_manual]{subheadings} || [] };
+		splice( @toc, $has_manual, 1, @manual_headings );
 	}
 	
 	my $SH;
