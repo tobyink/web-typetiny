@@ -119,7 +119,6 @@ $known{'Exporter::Tiny::Manual::QuickStart'} = 'Exporter-Tiny-Manual-QuickStart'
 $known{'Exporter::Tiny::Manual::Exporting'}  = 'Exporter-Tiny-Manual-Exporting';
 $known{'Exporter::Tiny::Manual::Importing'}  = 'Exporter-Tiny-Manual-Importing';
 $known{'Exporter::Tiny::Manual::Etc'}        = 'Exporter-Tiny-Manual-Etc';
-$known{'Type::Tie'}         = 'Type-Tie';
 $known{'Types::Path::Tiny'} = 'Types-Path-Tiny';
 $known{'Types::Self'} = 'Types-Self';
 
