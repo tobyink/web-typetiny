@@ -10,6 +10,8 @@ use Lingua::EN::Titlecase;
 use Path::Tiny qw(path);
 use Type::Tiny;
 use XML::LibXML::PrettyPrint;
+use XML::Atom::Feed;
+use URI;
 use HTML::HTML5::Writer;
 use HTML::HTML5::Parser;
 use HTML::HTML5::Sanity qw(fix_document);
@@ -23,7 +25,7 @@ if ($version =~ /^(.+)\.(...)(...)/ and $2 % 2) {
 	$version = "$1\.$2\_$3";
 }
 
-my $stable_version = '1.016010';
+my $stable_version = '2.002001';
 
 if ( $version !~ /_/ and $version gt $stable_version ) {
 	$stable_version = $version;
@@ -121,6 +123,19 @@ my $parser = TOBYINK::Pod::HTML->new(
 	code_highlighting => 1,
 	pretty => 1,
 );
+
+my $feed = XML::Atom::Feed->new( URI->new( 'https://toby.ink/tag/type-tiny/feed/atom/' ) );
+my $news = q{<ul class="list-group list-group-flush">} . "\n";
+my $news_count = 0;
+for my $e ( $feed->entries ) {
+	last if ++$news_count > 5;
+	$news .= sprintf(
+		q{<li class="list-group-item"><a href="%s">%s</a></li>},
+		encode_entities( $e->link->href ),
+		encode_entities( $e->title ),
+	) . "\n";
+}
+$news .= q{</ul>} . "\n";
 
 my $template = $destdir->child('build/template.html')->slurp_utf8;
 
@@ -339,7 +354,12 @@ for my $f (@files) {
 		"</div>\n" if @toc;
 	
 	$cards .= path("cards/$destfile.cards")->slurp_utf8 if -f "cards/$destfile.cards";
-	
+
+	$cards .= 
+		'<div class="card bg-light mb-3 contents-card">' .
+		'<div class="card-header bg-dark text-white">Recent Blogs</div>' . $news .
+		"</div>\n";
+
 	$main .= 
 		'<div class="card bg-dark text-white mb-3">' .
 		'<div class="card-header">Next Steps</div>' .
@@ -355,7 +375,7 @@ for my $f (@files) {
 	
 	my $banner = '';
 	if ($f eq 'index.html') {
-		$banner = '<img class="fullwidth" src="/assets/banner.jpeg" alt="">';
+		$banner = '<img class="fullwidth" src="./assets/banner-v2.jpeg" alt="">';
 	}
 	
 	my $vvv = 'Type::Tiny'->VERSION;
