@@ -103,20 +103,11 @@
 - name: linksmenu
   title: Links
   children:
-    - name: metacpan
-      title: MetaCPAN
-      icon: '<i class="fa-solid fa-circle-dot"></i>'
-      target: '_blank'
     - name: changelog
       title: Change Log
       href: https://metacpan.org/changes/distribution/Type-Tiny
       target: '_blank'
       icon: '<i class="fa-solid fa-file"></i>'
-    - divider: 1
-    - name: github
-      title: Github
-      icon: '<i class="fa-brands fa-github"></i>'
-      target: '_blank'
     - name: issues
       title: Issue Tracker
       icon: '<i class="fa-solid fa-bug"></i>'
@@ -142,3 +133,11 @@
       title: "Donate: Paypal"
       icon: '<i class="fa-solid fa-circle-dollar-to-slot"></i>'
       target: '_blank'
+- name: metacpan
+  title: CPAN
+  icon: '<i class="fa-solid fa-circle-dot"></i>'
+  target: '_blank'
+- name: github
+  title: Github
+  icon: '<i class="fa-brands fa-github"></i>'
+  target: '_blank'

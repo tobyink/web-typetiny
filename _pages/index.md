@@ -167,7 +167,7 @@ package Horse {
 	<div class="col-12 col-lg-6">
 		<h3>CPAN</h3>
 		<p>If you are using a non-system copy of Perl (for example, one installed in your home directory, or via perlbrew), then you should install Type-Tiny from CPAN.</p>
-		<p><a style="font-size:1.5rem;text-decoration:none" href="https://metacpan.org/dist/Type-Tiny"><i class="fa-solid fa-download"></i> Download from the CPAN</a></p>
+		<p><a class="btn btn-primary btn-lg" href="https://metacpan.org/dist/Type-Tiny"><i class="fa-solid fa-download"></i> Download from the CPAN</a></p>
 		<p>Further <a href="/Installation.html">installation advice</a> is available.</p>
 		<h3>Github</h3>
 		<p>Rarely, you will want to install the latest version from <a href="https://github.com/tobyink/p5-type-tiny">Github</a>.</p>
