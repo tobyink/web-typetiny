@@ -1,8 +1,0 @@
-<div class="card bg-secondary mb-3">
-<div class="card-header">Useful Links</div>
-<ul class="list-group list-group-flush">
-<li class="list-group-item"><a href="https://metacpan.org/pod/Type::Params">Type::Params</a></li>
-<li class="list-group-item"><a href="https://metacpan.org/pod/Kavorka">Kavorka</a></li>
-<li class="list-group-item"><a href="https://metacpan.org/pod/Function::Parameters">Function::Parameters</a></li>
-</ul>
-</div>

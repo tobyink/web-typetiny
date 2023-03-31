@@ -22,5 +22,5 @@ module.exports = [
       fn = target.buffer.file.path
       srv = atom.packages.activePackages['x-terminal'].mainModule.getInstance().providePlatformIOIDEService()
       srv.run( ['ls -l ' + fn ] )
-  }
+    }
 ]

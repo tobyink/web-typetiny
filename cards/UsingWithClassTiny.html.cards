@@ -1,9 +1,0 @@
-<div class="card bg-secondary mb-3">
-<div class="card-header">Useful Links</div>
-<ul class="list-group list-group-flush">
-<li class="list-group-item"><a href="https://metacpan.org/pod/Class::Tiny">Class::Tiny</a></li>
-<li class="list-group-item"><a href="https://metacpan.org/pod/Class::ConstrainedAccessor">Class::Tiny::ConstrainedAccessor</a></li>
-<li class="list-group-item"><a href="https://metacpan.org/pod/Class::Tiny::Antlers">Class::Tiny::Antlers</a></li>
-<li class="list-group-item"><a href="https://metacpan.org/pod/Type::Params">Type::Params</a></li>
-</ul>
-</div>

@@ -1,6 +1,0 @@
-<div class="card bg-secondary mb-3">
-<div class="card-header">Useful Links</div>
-<ul class="list-group list-group-flush">
-<li class="list-group-item"><a href="https://metacpan.org/pod/App::cpanminus">cpanm</a></li>
-</ul>
-</div>
