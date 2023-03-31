@@ -1,0 +1,17 @@
+name: Type-Tiny
+abstract: "tiny, yet Moo(se)-compatible type constraint"
+abstract_html: 'tiny, yet <span class="text-secondary">Moo(se)</span> compatible type constraint'
+github: https://github.com/tobyink/p5-type-tiny
+issues: https://github.com/tobyink/p5-type-tiny/issues
+copyright: "Copyright © 2019–2023 Toby Inkster. All rights reserved."
+sponsor:
+  html: "You can sponsor this project on Github."
+  href: https://github.com/sponsors/tobyink
+theme:
+  light: "#bcd7ec"
+  dark: "#1a1b53"
+  primary: "#14428c"
+  secondary: "#148c5e"
+  info: "#3a148c"
+homepage:
+  animation: waves2

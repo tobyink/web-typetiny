@@ -1,1 +1,5 @@
-^[^/]+.html$
+node_modules/
+_build/
+package-lock.json
+docs/
+lib

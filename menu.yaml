@@ -1,0 +1,144 @@
+- name: manualmenu
+  title: Manual
+  children:
+    - name: Manual
+      title: Introduction
+      pod: Type::Tiny::Manual
+    - name: Installation
+      title: Installation
+      pod: Type::Tiny::Manual::Installation
+    - name: UsingWithMoo
+      title: Using with Moo
+      pod: Type::Tiny::Manual::UsingWithMoo
+    - name: UsingWithMoo2
+      title: Using with Moo, part 2
+      pod: Type::Tiny::Manual::UsingWithMoo2
+    - name: UsingWithMoo3
+      title: Using with Moo, part 3
+      pod: Type::Tiny::Manual::UsingWithMoo3
+    - name: Libraries
+      title: Libraries
+      pod: Type::Tiny::Manual::Libraries
+    - name: UsingWithMoose
+      title: Using with Moose
+      pod: Type::Tiny::Manual::UsingWithMoose
+    - name: UsingWithMouse
+      title: Using with Mouse
+      pod: Type::Tiny::Manual::UsingWithMouse
+    - name: UsingWithClassTiny
+      title: Using with Class::Tiny
+      pod: Type::Tiny::Manual::UsingWithClassTiny
+    - name: UsingWithMite
+      title: Using with Mite
+      pod: Type::Tiny::Manual::UsingWithMite
+    - name: UsingWithOther
+      title: Using with other OO tookits
+      pod: Type::Tiny::Manual::UsingWithOther
+    - name: UsingWithTestMore
+      title: Using with Test::More
+      pod: Type::Tiny::Manual::UsingWithTestMore
+    - name: Params
+      title: Validating parameters
+      pod: Type::Tiny::Manual::Params
+    - name: NonOO
+      title: Non-object-oriented usage
+      pod: Type::Tiny::Manual::NonOO
+    - name: Optimization
+      title: Optimization
+      pod: Type::Tiny::Manual::Optimization
+    - name: Coercions
+      title: Coercions
+      pod: Type::Tiny::Manual::Coercions
+    - name: AllTypes
+      title: All types (index)
+      pod: Type::Tiny::Manual::AllTypes
+    - divider: 1
+    - name: Policies
+      title: Policies
+      pod: Type::Tiny::Manual::Policies
+    - name: Contributing
+      title: Contributing
+      pod: Type::Tiny::Manual::Contributing
+- name: libmenu
+  title: Libraries
+  children:
+    - pod: Types::Common
+    - divider: 1
+    - pod: Types::Standard
+    - pod: Types::Common::String
+    - pod: Types::Common::Numeric
+    - pod: Types::TypeTiny
+    - divider: 1
+    - pod: Types::Self
+    - pod: Types::Path::Tiny
+- name: utilsmenu
+  title: Utilities
+  children:
+    - pod: Type::Params
+    - pod: Type::Utils
+    - pod: Type::Registry
+    - pod: Type::Parser
+    - pod: Type::Tie
+    - pod: Eval::TypeTiny
+    - pod: Test::TypeTiny
+    - divider: 1
+    - pod: Exporter::Tiny
+- name: ooapimenu
+  title: OO API
+  children:
+    - pod: Type::Tiny
+    - pod: Type::Tiny::Class
+    - pod: Type::Tiny::Duck
+    - pod: Type::Tiny::Enum
+    - pod: Type::Tiny::Intersection
+    - pod: Type::Tiny::Role
+    - pod: Type::Tiny::Union
+    - divider: 1
+    - pod: Type::Coercion
+    - divider: 1
+    - pod: Type::Library
+    - divider: 1
+    - pod: Error::TypeTiny
+    - pod: Error::TypeTiny::Assertion
+- name: linksmenu
+  title: Links
+  children:
+    - name: metacpan
+      title: MetaCPAN
+      icon: '<i class="fa-solid fa-circle-dot"></i>'
+      target: '_blank'
+    - name: changelog
+      title: Change Log
+      href: https://metacpan.org/changes/distribution/Type-Tiny
+      target: '_blank'
+      icon: '<i class="fa-solid fa-file"></i>'
+    - divider: 1
+    - name: github
+      title: Github
+      icon: '<i class="fa-brands fa-github"></i>'
+      target: '_blank'
+    - name: issues
+      title: Issue Tracker
+      icon: '<i class="fa-solid fa-bug"></i>'
+      target: '_blank'
+    - name: codecov
+      href: https://codecov.io/gh/tobyink/p5-type-tiny
+      title: CodeCov
+      icon: '<i class="fa-solid fa-code-compare"></i>'
+      target: '_blank'
+    - name: coveralls
+      href: https://coveralls.io/github/tobyink/p5-type-tiny
+      title: Coveralls
+      icon: '<i class="fa-solid fa-code-compare"></i>'
+      target: '_blank'
+    - divider: 1
+    - name: ko-fi
+      href: https://ko-fi.com/tobyink
+      title: "Donate: Ko-fi"
+      icon: '<i class="fa-solid fa-circle-dollar-to-slot"></i>'
+      target: '_blank'
+    - name: paypal
+      href: https://paypal.me/tobyink
+      title: "Donate: Paypal"
+      icon: '<i class="fa-solid fa-circle-dollar-to-slot"></i>'
+      target: '_blank'
