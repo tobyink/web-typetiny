@@ -171,6 +171,8 @@ package Horse {
 		<p>Further <a href="/Installation.html">installation advice</a> is available.</p>
 		<h3>Github</h3>
 		<p>Rarely, you will want to install the latest version from <a href="https://github.com/tobyink/p5-type-tiny">Github</a>.</p>
+		<h3>Extras</h3>
+		<p>Some of the features discussed on this website are not included in the main Type-Tiny distribution, but in external distributions. In particular, <a target="_blank" href="https://exportertiny.github.io/">Exporter-Tiny</a>, <a target="_blank" href="https://metacpan.org/dist/Type-API">Type-API</a>, <a target="_blank" href="https://metacpan.org/dist/Types-Self">Types-Self</a>, and <a target="_blank" href="https://metacpan.org/dist/Types-Path-Tiny">Types-Path-Tiny</a>.
 	</div>
 </div>
 

@@ -4,6 +4,9 @@ abstract_html: 'tiny, yet <span class="text-secondary">Moo(se)</span> compatible
 github: https://github.com/tobyink/p5-type-tiny
 issues: https://github.com/tobyink/p5-type-tiny/issues
 copyright: "Copyright © 2019–2023 Toby Inkster. All rights reserved."
+pod_filter: 'NAME|BUGS|AUTHOR|THANKS|COPYRIGHT AND LICENCE|DISCLAIMER OF WARRANTIES'
+pod_titlecase: true
+pod_downgrade_headings: true
 sponsor:
   html: "You can sponsor this project on Github."
   href: https://github.com/sponsors/tobyink

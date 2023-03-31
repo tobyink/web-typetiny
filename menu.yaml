@@ -86,6 +86,12 @@
 - name: ooapimenu
   title: OO API
   children:
+    - pod: Type::API
+    - pod: Type::API::Constraint
+    - pod: Type::API::Constraint::Coercible
+    - pod: Type::API::Constraint::Constructor
+    - pod: Type::API::Constraint::Inlinable
+    - divider: 1
     - pod: Type::Tiny
     - pod: Type::Tiny::Class
     - pod: Type::Tiny::Duck
