@@ -11,25 +11,25 @@
 			on the CPAN (Comprehensive Perl Archive Network) and can be considered
 			a <strong>stable and mature framework</strong> for efficiently and
 			reliably enforcing data types.</p>
-			<p class="text-center pt-4"><img alt="GitHub Issues" src="https://img.shields.io/github/issues/tobyink/p5-type-tiny" title="GitHub Issues"> <img alt="GitHub Actions" src="https://github.com/tobyink/p5-type-tiny/workflows/CI/badge.svg" title="GitHub Actions"> <img alt="Coveralls status" src="https://coveralls.io/repos/github/tobyink/p5-type-tiny/badge.svg?branch=master" title="Coveralls status"> <img alt="Codecov status" src="https://codecov.io/gh/tobyink/p5-type-tiny/branch/master/graph/badge.svg" title="Codecov status"></p>
 		</div>
 		<div class="col-12 col-md-6 col-lg-4 col-xl-3">
 			<div class="card bg-info text-white mb-3">
 				<h2 class="card-header h4">Get Type-Tiny</h2>
 				<div class="card-body">
 					<p>Get Type-Tiny v2.2.1 from CPAN.</p>
-					<p><a class="btn btn-dark w-100" href="https://cpan.metacpan.org/authors/id/T/TO/TOBYINK/Type-Tiny-2.002001.tar.gz"><i class="fa-solid fa-download"></i> Type-Tiny-2.002001</a></p>
+					<p><a class="btn btn-dark w-100" href="https://cpan.metacpan.org/authors/id/T/TO/TOBYINK/Type-Tiny-2.004000.tar.gz"><i class="fa-solid fa-download"></i> Type-Tiny-2.004000</a></p>
 				</div>
 			</div>
-			<div class="card bg-danger text-white mb-3">
+			<!-- div class="card bg-danger text-white mb-3">
 				<h2 class="card-header h4">Trial Release</h2>
 				<div class="card-body">
 					<p>Get Type-Tiny v2.3.0 from CPAN.</p>
 					<p><a class="btn btn-dark w-100" href="https://cpan.metacpan.org/authors/id/T/TO/TOBYINK/Type-Tiny-2.003_000.tar.gz"><i class="fa-solid fa-download"></i> Type-Tiny-2.003_000</a></p>
 				</div>
-			</div>
+			</div -->
 		</div>
 	</div>
+	<p class="text-center pt-4"><img alt="GitHub Issues" src="https://img.shields.io/github/issues/tobyink/p5-type-tiny" title="GitHub Issues"> <img alt="GitHub Actions" src="https://github.com/tobyink/p5-type-tiny/workflows/CI/badge.svg" title="GitHub Actions"> <img alt="Coveralls status" src="https://coveralls.io/repos/github/tobyink/p5-type-tiny/badge.svg?branch=master" title="Coveralls status"> <img alt="Codecov status" src="https://codecov.io/gh/tobyink/p5-type-tiny/branch/master/graph/badge.svg" title="Codecov status"></p>
 </div>
 
 ----
