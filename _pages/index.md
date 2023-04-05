@@ -11,6 +11,7 @@
 			on the CPAN (Comprehensive Perl Archive Network) and can be considered
 			a <strong>stable and mature framework</strong> for efficiently and
 			reliably enforcing data types.</p>
+			<p class="text-center pt-4"><img alt="GitHub Issues" src="https://img.shields.io/github/issues/tobyink/p5-type-tiny" title="GitHub Issues"> <img alt="GitHub Actions" src="https://github.com/tobyink/p5-type-tiny/workflows/CI/badge.svg" title="GitHub Actions"> <img alt="Coveralls status" src="https://coveralls.io/repos/github/tobyink/p5-type-tiny/badge.svg?branch=master" title="Coveralls status"> <img alt="Codecov status" src="https://codecov.io/gh/tobyink/p5-type-tiny/branch/master/graph/badge.svg" title="Codecov status"></p>
 		</div>
 		<div class="col-12 col-md-6 col-lg-4 col-xl-3">
 			<div class="card bg-info text-white mb-3">
@@ -29,7 +30,6 @@
 			</div -->
 		</div>
 	</div>
-	<p class="text-center pt-4"><img alt="GitHub Issues" src="https://img.shields.io/github/issues/tobyink/p5-type-tiny" title="GitHub Issues"> <img alt="GitHub Actions" src="https://github.com/tobyink/p5-type-tiny/workflows/CI/badge.svg" title="GitHub Actions"> <img alt="Coveralls status" src="https://coveralls.io/repos/github/tobyink/p5-type-tiny/badge.svg?branch=master" title="Coveralls status"> <img alt="Codecov status" src="https://codecov.io/gh/tobyink/p5-type-tiny/branch/master/graph/badge.svg" title="Codecov status"></p>
 </div>
 
 ----
