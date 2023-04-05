@@ -28,6 +28,7 @@
 					<p><a class="btn btn-dark w-100" href="https://cpan.metacpan.org/authors/id/T/TO/TOBYINK/Type-Tiny-2.003_000.tar.gz"><i class="fa-solid fa-download"></i> Type-Tiny-2.003_000</a></p>
 				</div>
 			</div -->
+			<p class="text-center"><small class="text-muted">Earlier versions of Type-Tiny are <a class="text-muted" href="https://metacpan.org/dist/Type-Tiny">available on the CPAN</a>, but a lot of effort is kept to maintain backwards compatibility with Type-Tiny 1.000000, so installing an older version should almost never be necessary.</small></p>
 		</div>
 	</div>
 </div>
