@@ -17,7 +17,7 @@
 			<div class="card bg-info text-white mb-3">
 				<h2 class="card-header h4">Get Type-Tiny</h2>
 				<div class="card-body">
-					<p>Get Type-Tiny v2.2.1 from CPAN.</p>
+					<p>Get Type-Tiny v2.4.0 from CPAN.</p>
 					<p><a class="btn btn-dark w-100" href="https://cpan.metacpan.org/authors/id/T/TO/TOBYINK/Type-Tiny-2.004000.tar.gz"><i class="fa-solid fa-download"></i> Type-Tiny-2.004000</a></p>
 				</div>
 			</div>
